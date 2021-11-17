@@ -1,0 +1,19 @@
+{% extends "master.html" %}
+
+{% block content %}
+<h2>Add Stock Symbols</h2>
+<form action='/addstock' method='POST' class="ui form">
+    <select class="ui search dropdown" name='symbol'>
+        <option value="">State</option>
+        {% for x in symb %}
+
+        <option name='symbol'>{{ x }}</option>
+
+        {% endfor %}
+    </select>
+    <br>
+    <button class="ui button" type="submit">Submit</button>
+</form>
+<br>
+
+{% endblock %}

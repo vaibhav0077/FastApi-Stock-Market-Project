@@ -1,0 +1,79 @@
+{% extends "master.html" %}
+
+{% block content %}
+
+<script>
+    $(document).ready(function () {
+        $("#add_symbol").click(function () {
+            $('.ui.modal').modal('show');
+        });
+    })
+</script>
+
+<h2>Portfoil of {{ email }}</h2>
+
+<br>
+<div class="ui input focus">
+    <input type="text" placeholder="Search...">
+</div>
+
+<button class="ui button"><a href="/logout">Log Out</a></button>
+<br>
+<br>
+<!-- <button class="ui button" id='add_stocks'>ADD</button> -->
+<button id="add_symbol" class="ui button secondary"><a href='/createstock'>Add Symbols</a></button>
+
+<table class="ui celled table">
+    <thead>
+        <tr>
+
+            <!-- <th>id</th> -->
+            <th>symbol</th>
+            <th>displayName</th>
+            <th>industry</th>
+            <th>dateListed</th>
+            <th>marketCap</th>
+            <th>xid</th>
+            <th>priceChangeFiveDayPercent</th>
+            <th>isRecentListing</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stock in stocks %}
+        <tr>
+            <!-- <td>{{ stock.counter }}</td> -->
+            <td>{{ stock.symbol }}</td>
+            <td>{{ stock.displayName }}</td>
+            <td>{{ stock.industry }}</td>
+            <td>{{ stock.dateListed }}</td>
+            <td>{{ stock.marketCap }}</td>
+            <td>{{ stock.xid }}</td>
+            <td>{{ stock.priceChangeFiveDayPercent }}</td>
+            <td>{{ stock.isRecentListing }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Add Stocks
+    </div>
+    <div class="content">
+        <div class="ui form">
+            <div class="field">
+                <label>Symbols</label>
+                <textarea id="symbols"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="actions">
+        <div id="save" class="ui positive right labeled icon button">
+            Add Symbols
+            <i class="plus icon"></i>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
