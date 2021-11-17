@@ -285,3 +285,17 @@ def logout(request:Request):
 
     return templates.TemplateResponse("login.html", {"request": request})
 
+@app.get('/delete/{item}')
+async def delete(item):
+
+    file = open('crentendial.txt' )
+    logined_email = file.read()
+    file.close()
+
+    # query = 'select * from user_stocks where user_email ='+"'" + str(logined_email)+"'"
+    # DELETE FROM table_name WHERE condition;
+
+    query = 'DELETE FROM user_stocks WHERE user_email ='+ "'" + str(logined_email)+"'" + ' and symbol = '+"'"+ str(item) +"'"
+    qu_df = engine.connect().execute(text(query))
+    # print('DF :: ', qu_df)
+    return RedirectResponse('/home')

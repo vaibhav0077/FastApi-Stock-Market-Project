@@ -13,13 +13,10 @@
 <h2>Portfoil of {{ email }}</h2>
 
 <br>
-<div class="ui input focus">
-    <input type="text" placeholder="Search...">
-</div>
 
-<button class="ui button"><a href="/logout">Log Out</a></button>
-<br>
-<br>
+
+<button  class="ui right floated button"><a href="/logout">Log Out</a></button>
+
 <!-- <button class="ui button" id='add_stocks'>ADD</button> -->
 <button id="add_symbol" class="ui button secondary"><a href='/createstock'>Add Symbols</a></button>
 
@@ -36,6 +33,7 @@
             <th>xid</th>
             <th>priceChangeFiveDayPercent</th>
             <th>isRecentListing</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -50,6 +48,7 @@
             <td>{{ stock.xid }}</td>
             <td>{{ stock.priceChangeFiveDayPercent }}</td>
             <td>{{ stock.isRecentListing }}</td>
+            <td><a href="delete/{{ stock.symbol }}"><i class="cut icon"></i></a></td>
         </tr>
         {% endfor %}
     </tbody>
